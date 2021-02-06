@@ -30,7 +30,6 @@ class NewsAPINetworkService: NewsNetworkService {
                     let result = try self.handleNewsResponse(response)
                     completion(.success(result))
                 } catch {
-                    print(error)
                     completion(.failure(error))
                 }
             }

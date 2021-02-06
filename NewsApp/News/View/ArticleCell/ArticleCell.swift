@@ -2,7 +2,7 @@
 //  ArticleCell.swift
 //  NewsApp
 //
-//  Created by Illya Sirosh on 06.02.2021.
+//  Created by Illya Sirosh on 07.02.2021.
 //
 
 import UIKit
