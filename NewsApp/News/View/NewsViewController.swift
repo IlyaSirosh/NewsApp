@@ -17,12 +17,13 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+
     
     var presenter: NewsPresenter?
     weak var coordinator: Coordinator?
 
     let cellID = String(describing: ArticleCell.self)
-//    var refreshControl = UIRefreshControl()
+
       
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,6 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
         newsTableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID )
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        
-//        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-//        newsTableView.addSubview(refreshControl)
         
         navigationItem.title = "News"
         
@@ -43,7 +41,7 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
     @IBAction func previousNewsTapped(_ sender: UIButton) {
         presenter?.loadPrevNews()
     }
-    
+
     @IBAction func nextNewsTapped(_ sender: UIButton) {
         presenter?.loadNextNews()
     }
@@ -61,10 +59,6 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
         nextButton.isHidden = !next
     }
     
-//    @objc func refresh(_ sender: AnyObject) {
-//        sender.stopLoading()
-//        presenter?.reloadNews()
-//    }
 }
 
 

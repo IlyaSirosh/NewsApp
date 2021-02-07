@@ -89,7 +89,6 @@
         <!--Article View Controller-->
         <scene sceneID="lfr-7P-ZeZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-0I-SuJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ArticleViewController" id="5VI-3x-Uso" customClass="ArticleViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n1G-ru-1U4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -124,6 +123,7 @@
                         <outlet property="webView" destination="PHI-aZ-nvd" id="5wF-VW-CKL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zye-0I-SuJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="857" y="60"/>
         </scene>
