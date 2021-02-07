@@ -19,6 +19,52 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nrG-QX-oxU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="FqB-qK-DCv">
+                                    <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wsj-NR-GjJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySl-5b-k5n">
+                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="44"/>
+                                                    <state key="normal" title="Prev">
+                                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="previousNewsTapped:" destination="yI7-9l-uJK" eventType="touchUpInside" id="7KW-c7-IWo"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhR-Cj-5VX">
+                                                    <rect key="frame" x="217" y="0.0" width="197" height="44"/>
+                                                    <state key="normal" title="Next">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="nextNewsTapped:" destination="yI7-9l-uJK" eventType="touchUpInside" id="J0J-kR-Bsw"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Wsj-NR-GjJ" secondAttribute="trailing" id="O57-JR-6Az"/>
+                                        <constraint firstItem="Wsj-NR-GjJ" firstAttribute="leading" secondItem="FqB-qK-DCv" secondAttribute="leading" id="g1U-gk-IX2"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wsj-NR-GjJ" secondAttribute="bottom" id="pPL-pk-Qlu"/>
+                                        <constraint firstItem="Wsj-NR-GjJ" firstAttribute="top" secondItem="FqB-qK-DCv" secondAttribute="top" id="vcA-0J-hnz"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EkQ-qL-IfO">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EkQ-qL-IfO" id="2iP-4J-s3D">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tqd-mL-Lnj"/>
@@ -32,6 +78,8 @@
                     </view>
                     <connections>
                         <outlet property="newsTableView" destination="nrG-QX-oxU" id="hn7-0S-K1h"/>
+                        <outlet property="nextButton" destination="HhR-Cj-5VX" id="hgF-pn-19X"/>
+                        <outlet property="prevButton" destination="ySl-5b-k5n" id="LQp-3F-jNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksq-TA-ZqF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

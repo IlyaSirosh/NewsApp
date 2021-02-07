@@ -9,16 +9,20 @@ import UIKit
 
 protocol NewsView: AnyObject {
     func show(news: [Article])
+    func setPagination(prev: Bool, next: Bool)
 }
 
 class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarded {
     var articles: [Article] = []
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     var presenter: NewsPresenter?
     weak var coordinator: Coordinator?
 
     let cellID = String(describing: ArticleCell.self)
+//    var refreshControl = UIRefreshControl()
       
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +31,40 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
         newsTableView.delegate = self
         newsTableView.dataSource = self
         
+//        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+//        newsTableView.addSubview(refreshControl)
+        
         navigationItem.title = "News"
         
         presenter?.loadNews()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-
+    @IBAction func previousNewsTapped(_ sender: UIButton) {
+        presenter?.loadPrevNews()
+    }
+    
+    @IBAction func nextNewsTapped(_ sender: UIButton) {
+        presenter?.loadNextNews()
+    }
+    
+    
+    
     func show(news: [Article]) {
         articles = news
         newsTableView.reloadData()
+        newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
+    
+    func setPagination(prev: Bool, next: Bool) {
+        prevButton.isHidden = !prev
+        nextButton.isHidden = !next
+    }
+    
+//    @objc func refresh(_ sender: AnyObject) {
+//        sender.stopLoading()
+//        presenter?.reloadNews()
+//    }
 }
 
 

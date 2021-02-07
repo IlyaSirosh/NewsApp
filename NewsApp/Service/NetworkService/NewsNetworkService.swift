@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol NewsNetworkService {
-    func loadNews(completion: @escaping (Result<NewsResult, Error>) -> Void)
+    func loadNews(page: Int, completion: @escaping (Result<NewsResult, Error>) -> Void)
 }
 
 class NewsAPINetworkService: NewsNetworkService {
@@ -17,11 +17,12 @@ class NewsAPINetworkService: NewsNetworkService {
     private let apiKey = "e7809f321dc7413391b1b285892715ac"
 
     
-    func loadNews(completion: @escaping (Result<NewsResult, Error>) -> Void) {
+    func loadNews(page: Int, completion: @escaping (Result<NewsResult, Error>) -> Void) {
         let url = urlString(for: "everything")
         
         var params: [String: String] = [:]
         params["apiKey"] = apiKey
+        params["page"] = String(page)
         params["q"] = "election"
         
         AF.request(url, method: .get, parameters: params)
