@@ -13,12 +13,18 @@ class Assembly {
     
     private init() {}
     
-    func getNewsModule() -> UIViewController {
+    func getNewsModule() -> Coordinatable {
         let networkService = NewsAPINetworkService()
         let model = NewsProvider(networkService: networkService)
-        let view = NewsViewController()
+        let view = NewsViewController.instantiate()
         let presenter = NewsPresenterImpl(model: model, view: view)
         view.presenter = presenter
         return view
+    }
+    
+    func getArticleModule(for article: Article) -> Coordinatable {
+        let vc = ArticleViewController()
+        vc.article = article
+        return vc
     }
 }

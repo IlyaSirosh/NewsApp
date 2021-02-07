@@ -11,42 +11,35 @@ protocol NewsView: AnyObject {
     func show(news: [Article])
 }
 
-class NewsViewController: UIViewController, NewsView {
+class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarded {
     var articles: [Article] = []
-    var presenter: NewsPresenter!
-    var newsTableView: UITableView!
+    @IBOutlet weak var newsTableView: UITableView!
+    
+    var presenter: NewsPresenter?
+    weak var coordinator: Coordinator?
+
     let cellID = String(describing: ArticleCell.self)
       
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        newsTableView = UITableView()
-        view.addSubview(newsTableView)
-        newsTableView.translatesAutoresizingMaskIntoConstraints = false
-        newsTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
         
         newsTableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID )
         newsTableView.delegate = self
         newsTableView.dataSource = self
         
+        navigationItem.title = "News"
         
-        presenter.loadNews()
+        presenter?.loadNews()
     }
     
 
     func show(news: [Article]) {
-        print(" show data \(news.count ) items")
         articles = news
         newsTableView.reloadData()
     }
 }
 
-//
+
 
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +47,9 @@ extension NewsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("do something")
+        let article = articles[indexPath.row]
+        coordinator?.show(article: article)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

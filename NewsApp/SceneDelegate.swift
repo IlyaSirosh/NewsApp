@@ -8,8 +8,8 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
+    var coordinator: Coordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -22,8 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         /// 3. Create a view hierarchy programmatically
-        let viewController = Assembly.shared.getNewsModule()
-        let navigation = UINavigationController(rootViewController: viewController)
+        let navigation = UINavigationController()
+        coordinator = MainCoordinator(navigationController: navigation)
+        coordinator?.start()
         
         /// 4. Set the root view controller of the window with your view controller
         window.rootViewController = navigation
