@@ -30,6 +30,7 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
         navigationItem.title = "News"
         
         presenter?.loadNews()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 

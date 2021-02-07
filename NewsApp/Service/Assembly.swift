@@ -23,7 +23,7 @@ class Assembly {
     }
     
     func getArticleModule(for article: Article) -> Coordinatable {
-        let vc = ArticleViewController()
+        let vc = ArticleViewController.instantiate()
         vc.article = article
         return vc
     }
