@@ -61,8 +61,13 @@ class NewsProvider {
     
     
     private func load(completion: @escaping ([Article]) -> Void) {
+        let requestInfo = NewsRequest(
+            page: currentPage + 1,
+            country: "us",
+            source: nil,
+            category: nil)
         
-        networkService.loadNews(page: currentPage + 1) { [unowned self] result in
+        networkService.loadNews(requestInfo) { [unowned self] result in
             switch result {
             case .success(let result):
                 saveNews(result.articles)

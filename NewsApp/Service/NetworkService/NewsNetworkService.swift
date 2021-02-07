@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol NewsNetworkService {
-    func loadNews(page: Int, completion: @escaping (Result<NewsResult, Error>) -> Void)
+    func loadNews(_ info: NewsRequest, completion: @escaping (Result<NewsResult, Error>) -> Void)
 }
 
 class NewsAPINetworkService: NewsNetworkService {
@@ -17,20 +17,16 @@ class NewsAPINetworkService: NewsNetworkService {
     private let apiKey = "e7809f321dc7413391b1b285892715ac"
 
     
-    func loadNews(page: Int, completion: @escaping (Result<NewsResult, Error>) -> Void) {
+    func loadNews(_ info: NewsRequest, completion: @escaping (Result<NewsResult, Error>) -> Void) {
         let url = urlString(for: "top-headlines")
         
-        var params: [String: String] = [:]
-        params["apiKey"] = apiKey
-        params["page"] = String(page)
-        params["country"] = "us"
+        let queryParams = parameters(info)
         print(url)
         
-        AF.request(url, method: .get, parameters: params)
+        AF.request(url, method: .get, parameters: queryParams)
             .responseData { (response) in
                 do {
                     let result = try self.handleNewsResponse(response)
-                    print(result)
                     completion(.success(result))
                 } catch {
                     print(error)
@@ -49,6 +45,25 @@ class NewsAPINetworkService: NewsNetworkService {
         }
     }
     
+    private func parameters(_ info: NewsRequest) -> [String: String] {
+        var params: [String: String] = [:]
+        params["apiKey"] = apiKey
+        params["page"] = String(info.page)
+        
+        if let source = info.source {
+            params["source"] = source
+        } else {
+            if let country = info.country {
+                params["country"] = country
+            }
+            if let category = info.category {
+                params["category"] = category
+            }
+        }
+
+        
+        return params
+    }
     
     private func urlString(for path: String) -> String {
         "\(baseURLString)/\(path)"
