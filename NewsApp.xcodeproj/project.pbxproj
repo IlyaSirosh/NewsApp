@@ -25,6 +25,7 @@
 		49CF54E025D0027D006C3AED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF54DF25D0027D006C3AED /* Main.storyboard */; };
 		49CF54E825D00380006C3AED /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF54E725D00380006C3AED /* Storyboarded.swift */; };
 		49CF54EB25D0056F006C3AED /* String+Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF54EA25D0056F006C3AED /* String+Match.swift */; };
+		49CF54F425D05379006C3AED /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 49CF54F325D05379006C3AED /* Kingfisher */; };
 		49E1BADD25CEE60600C5D30B /* NewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E1BADC25CEE60600C5D30B /* NewsProvider.swift */; };
 		49E1BAE125CEE82D00C5D30B /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E1BAE025CEE82D00C5D30B /* NewsPresenter.swift */; };
 		49E1BAED25CEFA1600C5D30B /* ImageView+LoadURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E1BAEC25CEFA1600C5D30B /* ImageView+LoadURL.swift */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CF54F425D05379006C3AED /* Kingfisher in Frameworks */,
 				498BCB9E25CDCE3000B62725 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +217,7 @@
 			name = NewsApp;
 			packageProductDependencies = (
 				498BCB9D25CDCE3000B62725 /* Alamofire */,
+				49CF54F325D05379006C3AED /* Kingfisher */,
 			);
 			productName = NewsApp;
 			productReference = 490FF9E825C9B28500BFC517 /* NewsApp.app */;
@@ -245,6 +248,7 @@
 			mainGroup = 490FF9DF25C9B28500BFC517;
 			packageReferences = (
 				498BCB9C25CDCE3000B62725 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				49CF54F225D05379006C3AED /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 490FF9E925C9B28500BFC517 /* Products */;
 			projectDirPath = "";
@@ -495,6 +499,14 @@
 				minimumVersion = 5.4.1;
 			};
 		};
+		49CF54F225D05379006C3AED /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -502,6 +514,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 498BCB9C25CDCE3000B62725 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		49CF54F325D05379006C3AED /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49CF54F225D05379006C3AED /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

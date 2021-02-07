@@ -51,7 +51,9 @@ class NewsViewController: UIViewController, NewsView, Coordinatable, Storyboarde
     func show(news: [Article]) {
         articles = news
         newsTableView.reloadData()
-        newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        if articles.count > 0 {
+            newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
     }
     
     func setPagination(prev: Bool, next: Bool) {

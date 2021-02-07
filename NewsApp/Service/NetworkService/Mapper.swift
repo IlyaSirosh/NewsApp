@@ -32,7 +32,7 @@ struct Mapper {
             source: data.source.name,
             author: data.author ?? "anonymous",
             title: data.title,
-            description: data.description,
+            description: data.description ?? "",
             url: data.url,
             urlToImage: data.urlToImage,
             publishedAt: date,

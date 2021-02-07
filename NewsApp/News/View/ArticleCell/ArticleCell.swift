@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ArticleCell: UITableViewCell {
     var article: Article! {
@@ -35,7 +36,15 @@ class ArticleCell: UITableViewCell {
         authorLabel.text = article.author
         titleLabel.text = article.title
         descriptionLabel.text = article.description
-        articleImageView.load(url: article.urlToImage)
+        
+        if let url = article.urlToImage {
+            articleImageView.kf.setImage(with: url, options: [       .cacheOriginalImage,
+                .transition(.fade(0.25))
+            ])
+        } else {
+            articleImageView.image = nil
+        }
+        
         
     }
     

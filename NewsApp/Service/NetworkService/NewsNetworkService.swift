@@ -18,19 +18,22 @@ class NewsAPINetworkService: NewsNetworkService {
 
     
     func loadNews(page: Int, completion: @escaping (Result<NewsResult, Error>) -> Void) {
-        let url = urlString(for: "everything")
+        let url = urlString(for: "top-headlines")
         
         var params: [String: String] = [:]
         params["apiKey"] = apiKey
         params["page"] = String(page)
-        params["q"] = "election"
+        params["country"] = "us"
+        print(url)
         
         AF.request(url, method: .get, parameters: params)
             .responseData { (response) in
                 do {
                     let result = try self.handleNewsResponse(response)
+                    print(result)
                     completion(.success(result))
                 } catch {
+                    print(error)
                     completion(.failure(error))
                 }
             }

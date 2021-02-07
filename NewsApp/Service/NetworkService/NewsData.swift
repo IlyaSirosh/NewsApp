@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct NewsRequest {
+    var page: Int
+    var country: String?
+    var source: String?
+    var category: String?
+}
+
 struct NewsResultData: Decodable {
     let status: String
     let totalResults: Int
@@ -17,9 +24,9 @@ struct NewsData: Decodable {
     let source: Source
     let author: String?
     let title: String
-    let description: String
+    let description: String?
     let url: URL
-    let urlToImage: URL
+    let urlToImage: URL?
     let publishedAt: String
     let content: String?
     
